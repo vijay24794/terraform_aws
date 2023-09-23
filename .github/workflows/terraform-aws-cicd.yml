@@ -23,7 +23,7 @@ jobs:
 
       - name: cd dir
         run: |
-          cd /home/runner/work/terraform_aws/terraform_aws
+          cd /home/runner/work/terraform_aws/terraform_aws/eks/
           ls -altr
           date
         shell: bash
