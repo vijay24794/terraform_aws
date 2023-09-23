@@ -20,7 +20,14 @@ jobs:
           unzip terraform_1.5.4_linux_amd64.zip
           sudo mv terraform /usr/local/bin
         shell: bash
-       
+
+      - name: cd dir
+        run: |
+          cd /home/runner/work/terraform_aws/terraform_aws
+          ls -altr
+          date
+        shell: bash
+        
       - name: Terraform Init
         run: terraform init
         env:
