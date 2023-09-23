@@ -24,7 +24,7 @@ jobs:
       - name: Git Clone Action
         uses: sudosubin/git-clone-action@v1.0.1
         with:
-          repository: https://github.com/vijay24794/terraform_aws
+          repository: vijay24794/terraform_aws
 
       - name: Install Terraform
         run: |
