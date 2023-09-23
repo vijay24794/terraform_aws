@@ -23,7 +23,7 @@ jobs:
         
       - name: EKS Provisioning
         run: |
-          cd /home/runner/work/terraform_aws/eks/
+          cd /home/runner/work/terraform_aws/terraform_aws/eks/
           terraform init
           terraform plan
           terraform apply --auto-approve
