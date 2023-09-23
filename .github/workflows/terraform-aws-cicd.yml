@@ -11,35 +11,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone
-        uses: actions/checkout@v2
-      
       - name: Install Terraform
         run: |
           wget https://releases.hashicorp.com/terraform/1.5.4/terraform_1.5.4_linux_amd64.zip
           unzip terraform_1.5.4_linux_amd64.zip
           sudo mv terraform /usr/local/bin
         shell: bash
-
-      - name: cd dir
+        
+      - name: Clone
+        uses: actions/checkout@v2
+        
+      - name: EKS Provisioning
         run: |
           cd /home/runner/work/terraform_aws/terraform_aws/eks/
-          ls -altr
-          date
+          terraform init
+          terraform plan
+          terraform apply --auto-approve
         shell: bash
         
-      - name: Terraform Init -backend-config=/home/runner/work/terraform_aws/terraform_aws/eks/
-        run: terraform init
-        env:
-          AWS_ACCESS_KEY_ID: "AKIAXKRNQ6PFZIIY3Z7N" ##${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: "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" ##${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: "us-east-1" ##${{ secrets.AWS_DEFAULT_REGION }}
-
-      - name: Terraform plan PR Comment
-        if: github.event_name == 'pull_request'
-        run: |
-          terraform plan
-
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/master'
-        run: terraform apply --auto-approve
+      
