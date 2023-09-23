@@ -25,9 +25,9 @@ jobs:
         uses: sudosubin/git-clone-action@v1.0.1
         with:
           repository: vijay24794/terraform_aws
-          path: /tmp
+          path: tmp
 
-      - name: Install Terraform
+      - name: cd Directory
         run: |
           cd /tmp/terraform_aws/eks/
           ls -altr
