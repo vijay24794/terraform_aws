@@ -28,7 +28,7 @@ jobs:
           date
         shell: bash
         
-      - name: Terraform Init
+      - name: Terraform Init -backend-config=/home/runner/work/terraform_aws/terraform_aws/eks/
         run: terraform init
         env:
           AWS_ACCESS_KEY_ID: "AKIAXKRNQ6PFZIIY3Z7N" ##${{ secrets.AWS_ACCESS_KEY_ID }}
